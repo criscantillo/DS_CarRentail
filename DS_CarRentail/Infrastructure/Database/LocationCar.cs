@@ -8,6 +8,9 @@ namespace DS_CarRentail.Infrastructure.Database
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LocationCarId { get; set; }
+        public int CompanyId { get; set; }
+        [ForeignKey("CompanyId")]
+        public virtual Company? Company { get; set; }
         public int LocationId { get; set; }
         [ForeignKey("LocationId")]
         public virtual Location? Location { get; set; }

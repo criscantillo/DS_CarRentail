@@ -30,13 +30,13 @@ namespace DS_CarRentail.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CarType")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("HasAC")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("TransmissionAuot")
+                    b.Property<bool>("TransmissionAuto")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CarId");
@@ -73,16 +73,11 @@ namespace DS_CarRentail.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Coordinates")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("LocationId");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Location", (string)null);
                 });
@@ -99,6 +94,9 @@ namespace DS_CarRentail.Migrations
                     b.Property<decimal>("CarPriceForDay")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("InDate")
                         .HasColumnType("TEXT");
 
@@ -111,6 +109,8 @@ namespace DS_CarRentail.Migrations
                     b.HasKey("LocationCarId");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("LocationId");
 
@@ -169,22 +169,17 @@ namespace DS_CarRentail.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("DS_CarRentail.Infrastructure.Database.Location", b =>
-                {
-                    b.HasOne("DS_CarRentail.Infrastructure.Database.Company", "Company")
-                        .WithMany("Locations")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("DS_CarRentail.Infrastructure.Database.LocationCar", b =>
                 {
                     b.HasOne("DS_CarRentail.Infrastructure.Database.Car", "Car")
                         .WithMany()
                         .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DS_CarRentail.Infrastructure.Database.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -195,6 +190,8 @@ namespace DS_CarRentail.Migrations
                         .IsRequired();
 
                     b.Navigation("Car");
+
+                    b.Navigation("Company");
 
                     b.Navigation("Location");
                 });
@@ -216,11 +213,6 @@ namespace DS_CarRentail.Migrations
                     b.Navigation("LocationCar");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("DS_CarRentail.Infrastructure.Database.Company", b =>
-                {
-                    b.Navigation("Locations");
                 });
 #pragma warning restore 612, 618
         }

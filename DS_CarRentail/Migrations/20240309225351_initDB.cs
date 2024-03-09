@@ -6,17 +6,77 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DS_CarRentail.Migrations
 {
     /// <inheritdoc />
-    public partial class NewTables : Migration
+    public partial class initDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Car",
+                columns: table => new
+                {
+                    CarId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Type = table.Column<int>(type: "INTEGER", nullable: false),
+                    Brand = table.Column<string>(type: "TEXT", nullable: false),
+                    Capacity = table.Column<int>(type: "INTEGER", nullable: false),
+                    HasAC = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TransmissionAuto = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Car", x => x.CarId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Company",
+                columns: table => new
+                {
+                    CompanyId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Company", x => x.CompanyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Location",
+                columns: table => new
+                {
+                    LocationId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Address = table.Column<string>(type: "TEXT", nullable: false),
+                    Coordinates = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Location", x => x.LocationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "LocationCar",
                 columns: table => new
                 {
                     LocationCarId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    CompanyId = table.Column<int>(type: "INTEGER", nullable: false),
                     LocationId = table.Column<int>(type: "INTEGER", nullable: false),
                     CarId = table.Column<int>(type: "INTEGER", nullable: false),
                     CarPriceForDay = table.Column<decimal>(type: "TEXT", nullable: false),
@@ -31,6 +91,12 @@ namespace DS_CarRentail.Migrations
                         column: x => x.CarId,
                         principalTable: "Car",
                         principalColumn: "CarId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LocationCar_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
+                        principalColumn: "CompanyId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LocationCar_Location_LocationId",
@@ -76,6 +142,11 @@ namespace DS_CarRentail.Migrations
                 column: "CarId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LocationCar_CompanyId",
+                table: "LocationCar",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LocationCar_LocationId",
                 table: "LocationCar",
                 column: "LocationId");
@@ -99,6 +170,18 @@ namespace DS_CarRentail.Migrations
 
             migrationBuilder.DropTable(
                 name: "LocationCar");
+
+            migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
+                name: "Car");
+
+            migrationBuilder.DropTable(
+                name: "Company");
+
+            migrationBuilder.DropTable(
+                name: "Location");
         }
     }
 }

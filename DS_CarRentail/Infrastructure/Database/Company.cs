@@ -11,6 +11,5 @@ namespace DS_CarRentail.Infrastructure.Database
         public int CompanyId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public virtual ICollection<Location>? Locations { get; set; }
     }
 }

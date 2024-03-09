@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace DS_CarRentail.Infrastructure.Database
+﻿namespace DS_CarRentail.Application.Query
 {
-    public class Car
+    public class CarQuery
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CarId { get; set; }
         public int Type { get; set; }
         public string Brand { get; set; } = string.Empty;

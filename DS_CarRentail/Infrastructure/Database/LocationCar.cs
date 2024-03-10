@@ -10,13 +10,13 @@ namespace DS_CarRentail.Infrastructure.Database
         public int LocationCarId { get; set; }
         public int CompanyId { get; set; }
         [ForeignKey("CompanyId")]
-        public virtual Company? Company { get; set; }
+        public Company? Company { get; set; }
         public int LocationId { get; set; }
         [ForeignKey("LocationId")]
-        public virtual Location? Location { get; set; }
+        public Location? Location { get; set; }
         public int CarId { get; set; }
         [ForeignKey("CarId")]
-        public virtual Car? Car { get; set; }
+        public Car? Car { get; set; }
         public decimal CarPriceForDay { get; set; }
         public DateTime InDate { get; set; }
         public DateTime OutDate { get; set; }

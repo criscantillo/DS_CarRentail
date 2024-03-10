@@ -1,5 +1,6 @@
 using DS_CarRentail.Infrastructure.Database;
 using DS_CarRentail.Infrastructure.Shared;
+using DS_CarRentail.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ISearchCarService, SearchCarService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 
 builder.Services.AddDbContext<CarRentailContext>(options => 
 {

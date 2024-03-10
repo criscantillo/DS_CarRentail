@@ -1,5 +1,4 @@
-﻿using DS_CarRentail.Domain;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace DS_CarRentail.Infrastructure.Database

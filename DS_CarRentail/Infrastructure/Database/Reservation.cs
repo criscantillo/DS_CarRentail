@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using DS_CarRentail.Domain;
 
 namespace DS_CarRentail.Infrastructure.Database
 {
@@ -19,5 +18,6 @@ namespace DS_CarRentail.Infrastructure.Database
         public virtual User? User {  get; set; } 
         public DateTime From { get; set; }
         public DateTime To { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

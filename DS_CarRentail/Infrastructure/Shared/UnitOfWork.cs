@@ -5,11 +5,13 @@ namespace DS_CarRentail.Infrastructure.Shared
     public class UnitOfWork : IUnitOfWork
     {
         private readonly CarRentailContext _context;
+        public readonly IRepository<Company> _companyRepository;
         private readonly IRepository<Car> _carRepository;
         private readonly IRepository<Location> _locationRepository;
         private readonly IRepository<LocationCar> _locationCarRepository;
         private readonly IRepository<Reservation> _reservationRepository;
 
+        public IRepository<Company> Companies => _companyRepository;
         public IRepository<Car> Cars => _carRepository;
         public IRepository<Location> Locations => _locationRepository;
         public IRepository<LocationCar> LocationCars => _locationCarRepository;
@@ -22,6 +24,7 @@ namespace DS_CarRentail.Infrastructure.Shared
             _locationRepository = new Repository<Location>(context);
             _locationCarRepository = new Repository<LocationCar>(context);
             _reservationRepository = new Repository<Reservation>(context);
+            _companyRepository = new Repository<Company>(context);
         }
 
         public async Task<int> Save()

@@ -13,6 +13,10 @@ namespace DS_CarRentail.Application
             CreateMap<UpdateCarCommand, Car>();
             CreateMap<Car, CarQuery>();
             CreateMap<Location, SimpleLocationQuery>();
+            CreateMap<Company, CompanyQuery>();
+            CreateMap<LocationCar, LocationCarQuery>();
+            CreateMap<ReserveCarCommand, Reservation>();
+            CreateMap<Reservation, ReserveCarQuery>();
         }
     }
 }

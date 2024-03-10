@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_CarRentail", "DS_CarRentail\DS_CarRentail.csproj", "{9FE10223-F1A8-40AC-AAA7-1703F2B4BEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_CarRentail", "DS_CarRentail\DS_CarRentail.csproj", "{9FE10223-F1A8-40AC-AAA7-1703F2B4BEBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_CarRentailTest", "DS_CarRentailTest\DS_CarRentailTest.csproj", "{11D6DD66-A45A-4646-8B95-C70B91FEB449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9FE10223-F1A8-40AC-AAA7-1703F2B4BEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE10223-F1A8-40AC-AAA7-1703F2B4BEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE10223-F1A8-40AC-AAA7-1703F2B4BEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D6DD66-A45A-4646-8B95-C70B91FEB449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D6DD66-A45A-4646-8B95-C70B91FEB449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D6DD66-A45A-4646-8B95-C70B91FEB449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D6DD66-A45A-4646-8B95-C70B91FEB449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
